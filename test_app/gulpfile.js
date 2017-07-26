@@ -23,30 +23,31 @@ var gulp     = require('gulp'),
 
 // source -> build paths
 const dirs = {
-    src : 'src',
-    dest: 'build'
+    src : './app',
+    dest: './web'
 }
 
 const paths = {
    
     index: {
-        src : 'app/index.html',
-        dest: 'web/index.html'
+        src : dirs.src  + '/index.html',
+        dest: dirs.dest + '/index.html'
     },
 
     css : {
-        src : 'app/css/',
-        dest: 'web/min.css'
+        src : dirs.src  + '/css/',
+        dest: dirs.dest + '/min.css'
     },
 
     js: {
-        src : 'app/js/',
-        dest: 'web/min.js'
+        src : dirs.src  + '/js/',
+        dest: dirs.dest + '/script.js'
     },
     
     react: {
-        src : 'app/js/ReactComponents/',
-        dest: 'web/min.js'
+        src      : dirs.src  + '/js/ReactComponents/',
+        src_index: dirs.src  + '/js/main.js',
+        dest: dirs.dest + '/libs.js'
     }
 
     /*react: {
@@ -58,8 +59,8 @@ const paths = {
 
 
 //Main
-gulp.task("build", sync(["clean", ["htmlreplace", "mkweb-js","mkweb-css"]]));
-gulp.task("run", sync(["build", ["watch", "server"]]));
+gulp.task("build"  , sync(["clean", ["htmlreplace", "mkweb-js","mkweb-css"]]));
+gulp.task("run"    , sync(["build", ["watch", "server"]]));
 gulp.task('default', ['run'])
 
 
@@ -70,13 +71,15 @@ gulp.task('watch',function(){
         paths.js.src + '/*.js'],
                ["mkweb-js"]);  // react js -> babel
 
+    gulp.watch([paths.index.src], ["htmlreplace"]);
+
     return gulp.watch([paths.css.src + '/*.scss'],   ["mkweb-css"])     // css
 })
 
 // Start web server
 gulp.task('server', function(cb){
     http.createServer(
-        st({ path: __dirname + '/web/', index: 'index.html', cache: false})
+        st({ path: __dirname + '/' + dirs.dest, index: 'index.html', cache: false})
     ).listen(3000, cb);
 });
 
@@ -86,7 +89,7 @@ gulp.task('htmlreplace', function(){
     return gulp.src(paths.index.src)
         .pipe(htmlreplace({
             "css": 'min.css',
-            "js":  'min.js'
+            "js":  ['libs.js', 'script.js']
         }))
         .pipe(concat(paths.index.dest))
         .pipe(gulp.dest('.'));
@@ -111,17 +114,7 @@ gulp.task("mkweb-css", function(){
         .pipe(gulp.dest('.'));
 });*/
 
-gulp.task("mkweb-js", sync(["intermediate-to-web", "clean-intermediate"]));
-
-gulp.task("intermediate-to-web", ["bundleJS"], function(){
-    return gulp.src('intermediate/*.js')
-        .pipe(concat(paths.js.dest))
-        .pipe(gulp.dest('.'));
-    
-})
-
-gulp.task('bundleJS', function(){
-    var browser_bundle = browserify({entries: paths.js.src + '/main.js'})    // main.js references ReactComponents so we don't have to
+gulp.task('mkweb-js', function(){
     
     var external_deps = ['react','react-dom'];
 
@@ -129,9 +122,12 @@ gulp.task('bundleJS', function(){
     var t1 = browserify({require: external_deps /*,debug: true*/})
         .bundle()
         .on('error', gutil.log)
-        .pipe(source('__libs.js'))
-        .pipe(gulp.dest('intermediate/'));        
+        .pipe(source(paths.react.dest))
+        .pipe(gulp.dest('.'));
 
+    
+    var browser_bundle = browserify({entries: paths.react.src_index})    // main.js references ReactComponents so we don't have to
+    
     // Don't lock in dev deps into app
     external_deps.forEach(function(d){
         browser_bundle.external(d)
@@ -141,27 +137,22 @@ gulp.task('bundleJS', function(){
         .transform('babelify', {presets: [ "es2015", "react"]})  // --> .babelrc if you want
         .bundle()
         .on('error', gutil.log)
-        .pipe(source('__script.js'))
-        .pipe(gulp.dest('intermediate/'));
+        .pipe(source(paths.js.dest))
+        .pipe(gulp.dest('.'));
         
-    return t1 + " " + t2; // gives sync a clue
+    return t1 + " " + t2; // gives sync a clue to wait on both
 });
 
 
 
 // Cleaning
-gulp.task('clean-intermediate' , /*["intermediate-to-web"],*/ function(){
-    return gulp.src('intermediate/**/**', {read:false})
-        .pipe(clean())
-})
-
 
 gulp.task('clean', function(){
-    mkdirp('./web', function(e){
+    mkdirp(dirs.dest, function(e){
         if (e) console.error(e);
     });
 
-    return gulp.src('web/*', {read: false})
+    return gulp.src(dirs.dest + '/*', {read: false})
         .pipe(clean())
        
 })
