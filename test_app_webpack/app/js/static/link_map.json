@@ -1,0 +1,56 @@
+{
+	jobs : {
+		"Today's Jobs"                     : ["jobs", ["specified", "full"  ]],
+		"Jobs per day this month"          : ["jobs", ["specified", "month" ]],
+		"Jobs in error per day this month" : ["jobs", ["specified", "emonth"]],
+		
+		"All unfinished jobs"              : [
+			"jobs", ["specified", "full"], {
+				operation : "unfinished",
+			}
+		],
+
+		"Jobs per month"          : ["jobs", ["per", "month" ]],
+		"Jobs in error per month" : ["jobs", ["per", "emonth"]],
+		"Jobs per user"           : ["jobs", ["per", "user"  ]],
+		"Jobs per tool"           : ["jobs", ["per", "tool"  ]],
+		
+		"Errors per tool"         : [
+			"jobs", ["per", "etool" ], {
+				spark_time : ""
+			}
+		]
+	},
+
+	histories : {
+		"Histories and Datasets per User": ["history", ["hand","user"], null],
+		"States of Datasets per History" : ["history", ["hand","type"], null]
+	},
+
+	tools : {
+		"States of Jobs per Tool" : ["tools", ["by", "state"], null],
+		"Execution Time per Tool" : ["tools", ["by", "time" ], null]
+	},
+
+	workflows : {
+		"Runs per Workflows"  : ["workflows", ["per", "flow" ]],
+		"Workflows per month" : ["workflows", ["per", "month"]],
+		"Workflows per user"  : ["workflows", ["per", "user" ]]
+	},
+
+	users : {
+		"Registered users"           : ["users", ["by", "register"], null],
+		"Date of last login"         : ["users", ["by", "date"    ]],
+		"User disk usage"            : ["users", ["by", "usage"   ]],
+		"Number of History per user" : ["users", ["by", "history" ]]
+	},
+
+	system : {
+		"Disk space maintenance" :  ["system", null]
+	},
+
+	tracking : {
+		"Sequencing requests per month" : ["tracking", ["per", "month" ], null],
+		"Sequencing requests per user"  : ["tracking", ["per", "user"  ], null]
+	}
+}
