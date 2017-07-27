@@ -1,0 +1,9 @@
+
+
+Discoverables:
+ -> React components *must* have .js extensions for Babel to parse properly
+ -> Adjacent React components must be contained within a <div> upon render
+
+ TODO:
+ -> React + D3
+ -> Program requirements 
