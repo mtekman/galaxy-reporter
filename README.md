@@ -8,10 +8,10 @@ Jest will be used for testing React components (to implement)
 
 ### Usage ####
 
-Using gulp [depreciated, migrated to WebPack]
+[gulp depreciated, migrated to WebPack]
 
-~~To build : `gulp build`~~
-~~To run: `gulp`~~
+~~build : `gulp build`~~  
+~~run: `gulp`~~
 
 `cd test_app_webpack`  
 `./run`
