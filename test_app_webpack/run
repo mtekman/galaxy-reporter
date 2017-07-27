@@ -1,4 +1,8 @@
 #!/bin/bash
-[ "$1" = "" ] && sed -e '/scripts/,/}/!d' package.json | awk -F: '{print $1"\t"$2}' | tail +2 | head -n -1 | sed 's/"//g' && exit -1
+[ "$1" = "" ] && sed -e '/scripts/,/}/!d' package.json\
+ | awk -F: '{print $1"\t"$2}'\
+ | tail +2 | head -n -1\
+ | sed 's/"//g'\
+  && exit -1
 
 npm run-script $*
