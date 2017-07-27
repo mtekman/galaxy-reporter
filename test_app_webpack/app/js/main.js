@@ -8,6 +8,7 @@ import Link          from './ReactComponents/Link.jsx';
 import ShoppingList  from './ReactComponents/ShoppingList.jsx';
 import Game          from './ReactComponents/TestComponent.jsx';
 
+
 require('../css/style.scss');
 
 ReactDOM.render(
