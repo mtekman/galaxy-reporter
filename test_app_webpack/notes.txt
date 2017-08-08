@@ -3,6 +3,7 @@
 Discoverables:
  -> React components *must* have .js extensions for Babel to parse properly
  -> Adjacent React components must be contained within a <div> upon render
+ -> webpack and webpack-dev-server must be built from npm and not from arch repos
 
  TODO:
  -> React + D3

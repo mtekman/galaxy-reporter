@@ -1,4 +1,6 @@
-import React from 'React';
+import React from 'react';
+
+// fails here, cant resolve json
 //import {link_types} from 'static/link_types.json';
 //import {link_map}   from 'static/link_map.json';
 
@@ -24,7 +26,7 @@ export default class Link extends React.Component {
             class: modes.none
         };     /* default */
 
-        this.props.page = makeURL(); // build once, independent of state changes or rerenders
+        this.props.page = this.makeURL(); // build once, independent of state changes or rerenders
     }
 
     _onMouseEnter() {  this.setState({class: modes.hover});   }

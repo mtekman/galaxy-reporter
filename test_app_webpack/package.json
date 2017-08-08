@@ -4,7 +4,7 @@
   "description": "React/ES6 port of Galaxy Browser's reports page",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --progress --colors --watch",
+    "start": "webpack-dev-server --hot --progress --colors",
     "build": "webpack --optimize-minimize --progress --display-error-details",
     "test": "jest"
   },

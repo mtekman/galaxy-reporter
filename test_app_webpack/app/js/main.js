@@ -1,9 +1,8 @@
-
-import React from 'react';
 import ReactDOM from 'react-dom';
+import React from 'react';
 
-import {data} from 'data.js';
-import Link from 'Panels/ReportLink';
+//import {data} from 'data.js';
+import Link from './Panels/ReportLink.jsx';
 /*import FilterTable   from './ReactComponents/FilterTable.jsx';
 import Link          from './ReactComponents/Link.jsx';
 import ShoppingList  from './ReactComponents/ShoppingList.jsx';
@@ -12,6 +11,8 @@ import Game          from './ReactComponents/TestComponent.jsx';*/
 
 require('../css/style.scss');
 
+
+console.log("test")
 
 ReactDOM.render(
 	<Link panel_header="destroy" title="desk" >Test Link</Link>,
