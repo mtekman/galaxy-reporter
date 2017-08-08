@@ -3,7 +3,7 @@ const paths = {
     index : {  src : dirs.src  + '/index.html',           dest: dirs.dest + '/index.html'    },
     css   : {  src : dirs.src  + '/css/',                 dest: dirs.dest + '/min.css'       },
     js    : {  src : dirs.src  + '/js/',                  dest: dirs.dest + '/script.js'     },   
-    react : {  src : dirs.src  + '/js/ReactComponents/',  src_index: dirs.src  + '/js/main.js',      dest: dirs.dest + '/libs.js'   }
+    react : {  src : dirs.src  + '/js/Panels/',  src_index: dirs.src  + '/js/main.js',      dest: dirs.dest + '/libs.js'   }
 }
 
 const path    = require('path'),
