@@ -12,17 +12,43 @@ import '../css/style.scss';
 import linkmap  from './static/link_map.json';
 //console.log(linkmap);
 
+
+function generatePanel(header){
+	console.log("generate", header, linkmap[header]);
+
+		return <PanelSection
+					section_header={header}
+					section_titles={linkmap[header]} >
+			</PanelSection>;
+}
+
 function drawOne(){
 	for (var header in linkmap){
 		ReactDOM.render(
-			<PanelSection section_header={header} section_titles={linkmap[header]} ></PanelSection>,
+			generatePanel(header),
 			document.getElementById('react-sidepanel')
 		);
-		return 0
 	}
 }
 
+
+function drawAll(){
+	var sections = [];
+
+	for (var header in linkmap){
+		sections.push(
+			generatePanel(header)
+		);
+	}
+
+	ReactDOM.render(
+		sections,
+		document.getElementById('react-sidepanel')
+	);
+}
+
 drawOne();
+//drawAll();
 
 /*ReactDOM.render(
 	<Link panel_header="users" title="User disk usage" ></Link>,

@@ -29,7 +29,11 @@ export default class PanelSection extends React.Component {
 
 
   __generateSingleLink(header, title){
-    return <Link panel_header={header} title={title} ></Link>;
+    return (
+      <li key={header + "_" + title}>
+        <Link panel_header={header} title={title} ></Link>
+      </li>
+    );
   }
 
   hideLinks(){  this.setState({class: "hidelinks"}); }
@@ -47,7 +51,7 @@ export default class PanelSection extends React.Component {
          >
         <h1>{this.header}</h1>
         <div className="links">
-            {this.__generateLinksInPanel}
+            {this.__generateLinksInPanel()}
         </div>
       </div>
     );
