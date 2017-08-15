@@ -2,16 +2,15 @@ import React from 'react';
 
 // fails here, cant resolve json
 //import {link_types} from 'static/link_types.json';
-//import {link_map}   from 'static/link_map.json';
-
+import linkmap  from '../static/link_map.json';
 
 //Static vars
-//const linkmap = { link_map },
-const      modes   = { none : 'normal', hover : 'hover'}
+//const linkmap = { link_map };
+const      modes   = { "none" : 'normal', "hover" : 'hover'}
 //const      types   = { link_types },
 const      sort_defaults = {
-        sort_id : 'default',
-        order   : 'default'
+  "sort_id" : 'default',
+  "order"   : 'default'
 }
 
 export default class Link extends React.Component {

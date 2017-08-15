@@ -1,8 +1,8 @@
 const dirs  = {  src: 'app',     dest : 'web' };
-const paths = {  
+const paths = {
     index : {  src : dirs.src  + '/index.html',           dest: dirs.dest + '/index.html'    },
     css   : {  src : dirs.src  + '/css/',                 dest: dirs.dest + '/min.css'       },
-    js    : {  src : dirs.src  + '/js/',                  dest: dirs.dest + '/script.js'     },   
+    js    : {  src : dirs.src  + '/js/',                  dest: dirs.dest + '/script.js'     },
     react : {  src : dirs.src  + '/js/Panels/',  src_index: dirs.src  + '/js/main.js',      dest: dirs.dest + '/libs.js'   }
 }
 
@@ -37,9 +37,11 @@ module.exports = {
         loaders : [
             {
                 test: /\.jsx?$/,
-                loaders: ['react-hot-loader', 'jsx-loader', 'babel-loader'], 
+                loaders: ['react-hot-loader', 'jsx-loader', 'babel-loader'],
                 exclude: /node_modules/
             },
+
+//            { test: /\.json/, loader: ['json-loader'], exclude: /node_modules/},
 
             {
                 test: /\.scss$/,
@@ -64,4 +66,3 @@ module.exports = {
 
     plugins : [ html_replace, html_plugin, cssextract ]
 }
-                
