@@ -7,7 +7,7 @@ import linkmap  from '../static/link_map.json';
 //const      types   = { link_types },
 
 //Static vars
-const modes   = { "none" : 'normal', "hover" : 'hover'}
+const modes   = { "none" : 'normalcy', "hover" : 'hovercy'}
 const sort_defaults = {
   "sort_id" : 'default',
   "order"   : 'default'
@@ -22,16 +22,17 @@ export default class Link extends React.Component {
     this.__title  = props.title,
 
     this.state = {
-      class: modes.none
+      class: modes.none,
+      url : this.makeURL()
     };     /* default */
-
-    this.props.page = this.makeURL(); // build once, independent of state changes or rerenders
   }
 
-  _onMouseEnter() {  this.setState({class: modes.hover});   }
-  _onMouseLeave() {  this.setState({class: modes.none});    }
+  //setState(state){   this.state.class = state.class;     }
+  _onMouseEnter() {  this.setState({class: modes.hover});  }
+  _onMouseLeave() {  this.setState({class: modes.none}); }
 
   makeURL(){
+    //console.log("constructing URL");
     // e.g. ["workflows", ["per", "flow" ]],
     let url_elements = this._getLinkElements(),
     dirname  = url_elements[0],
@@ -47,18 +48,25 @@ export default class Link extends React.Component {
 
   static _buildURL(dir, path, opts){
 
-    let typer = types.type;
+    let typer = types.type,
+        sub1 = path[0],
+        sub2 = path[1];
 
     if (!(dir in typer)){
       throw new Error(dir + " not in link types");
     }
 
-    if (!(path in typer[dir])){
-      throw new Error(dir + " not in link type section: " + path);
+    if (!(sub1 in typer[dir])){
+      throw new Error(sub1 + " not in link type section: " + typer[dir]);
     }
 
+    if (!(sub2 in typer[dir][sub1])){
+      throw new Error(sub2 + " not in link type section: " + typer[dir][sub1]);
+    }
+
+
     let new_dir  = typer[dir].__name,
-    new_path = typer[dir][path[0]][path[1]];
+    new_path = typer[dir][sub1][sub2];
 
     // opts - e.g. sort_id=default&order=default
     let opts_str = "";
@@ -88,12 +96,15 @@ _getLinkElements(){
 }
 
 render() {
+  var that = this;
+
   return (
     <a
       className={this.state.class}
-      href={this.props.page || '#'}
-      onMouseEnter={this._onMouseEnter}
-      onMouseLeave={this._onMouseLeave}>
+      href={this.state.url || '#'}
+      onMouseEnter={this._onMouseEnter.bind(that)}
+      onMouseLeave={this._onMouseLeave.bind(that)}>
+      {this.__title}
       {this.props.children}
     </a>
   );

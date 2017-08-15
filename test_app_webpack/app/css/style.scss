@@ -1,8 +1,18 @@
 
 body {
-    background: white;
+    background: #555;
 }
 
 h1 {
     background: blue;
+}
+
+.normalcy { /*REACT uses it's own names, hmm */
+  background: black;
+  color: white;
+}
+
+.hovercy {
+  background: white;
+  color: black;
 }
