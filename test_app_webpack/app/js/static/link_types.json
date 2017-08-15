@@ -1,82 +1,82 @@
 {
-    type : {
-        jobs : {
-            __name : 'jobs', 
+  "type" : {
 
-            specified : {
-                full :  'specified_date_handler',
-                month:  'specified_month',
-                emonth:  'specified_month_in_error'
+    "jobs" : {
+      "__name" : "jobs",
 
-            },
+      "specified" : {
+        "full"  :  "specified_date_handler",
+        "month" :  "specified_month",
+        "emonth":  "specified_month_in_error"
 
-            per : {
-                month : 'per_month_all',
-                emonth: 'per_month_in_error',
-                user  : 'per_user',
-                tool  : 'per_tool',
-                etool : 'errors_per_tool'
-            }
-        },
+      },
 
-        history  : {
-            __name : 'history',
-
-            hand : {
-                user : 'history_and_dataset_per_user',
-                type : 'history_and_dataset_type'
-            },
-        },
-
-        tools    : {
-            __name : 'tools',
-
-            by : {
-                state : 'tools_and_job_state',
-                time  : 'tool_execution_time'
-            }
-        },
-
-        workflows: {
-            __name: 'workflows',
-
-            per : {
-                month : 'per_month_all',
-                user  : 'per_user',
-                flow  : 'per_workflow'
-            }
-        },
-
-        users    : {
-            __name : 'users',
-            by : {
-                register : 'registered_users',
-                date     : 'last_access_date',
-                usage    : 'user_disk_usage',
-                history  : 'history_per_user'
-            }
-        },
-
-        system   : 'system',
-        
-        tracking   : {
-            __name : 'sample-tracking',
-            per : {
-                month : 'per_month_all',
-                user  : 'per_user'
-            }
-        }
+      "per" : {
+        "month"  : "per_month_all",
+        "emonth" : "per_month_in_error",
+        "user"   : "per_user",
+        "tool"   : "per_tool",
+        "etool"  : "errors_per_tool"
+      }
     },
-/*
-    
-    sort : {
 
-        type : {
-            default: 'default',
-            reverse: 'reverse'
-        },
+    "history"  : {
+      "__name" : "history",
 
-        id       : 'sort_id',
-        order    : 'order',
-    }*/
+      "hand" : {
+        "user" : "history_and_dataset_per_user",
+        "type" : "history_and_dataset_type"
+      }
+    },
+
+    "tools"    : {
+      "__name" : "tools",
+
+      "by" : {
+        "state" : "tools_and_job_state",
+        "time"  : "tool_execution_time"
+      }
+    },
+
+    "workflows": {
+      "__name": "workflows",
+
+      "per" : {
+        "month" : "per_month_all",
+        "user"  : "per_user",
+        "flow"  : "per_workflow"
+      }
+    },
+
+    "users"    : {
+      "__name" : "users",
+      "by" : {
+        "register" : "registered_users",
+        "date"     : "last_access_date",
+        "usage"    : "user_disk_usage",
+        "history"  : "history_per_user"
+      }
+    },
+
+    "system"   : "system",
+
+    "tracking"   : {
+      "__name" : "sample-tracking",
+      "per" : {
+        "month" : "per_month_all",
+        "user"  : "per_user"
+      }
+    }
+  },
+
+  "__UNUSED__sort" : {
+
+    "type" : {
+      "default": "default",
+      "reverse": "reverse"
+    },
+
+    "id"       : "sort_id",
+    "order"    : "order"
+  }
 }

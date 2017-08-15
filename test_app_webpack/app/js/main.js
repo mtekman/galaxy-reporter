@@ -15,7 +15,7 @@ require('../css/style.scss');
 console.log("test")
 
 ReactDOM.render(
-	<Link panel_header="destroy" title="desk" >Test Link</Link>,
+	<Link panel_header="users" title="User disk usage" >Test Link</Link>,
 	document.getElementById('react-link')
 );
 
