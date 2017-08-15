@@ -1,0 +1,4 @@
+
+Styles:
+ Pass CSS vars to React
+ Fill out styles
