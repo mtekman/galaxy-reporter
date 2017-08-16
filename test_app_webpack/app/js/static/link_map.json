@@ -42,7 +42,7 @@
 	},
 
 	"system" : {
-		"Disk space maintenance" :  ["system", null]
+		"Disk space maintenance" :  ["system", ["", ""]]
 	},
 
 	"tracking" : {
