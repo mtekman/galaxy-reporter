@@ -16,3 +16,30 @@ h1 {
   background: white;
   color: black;
 }
+
+
+.panels_main {
+   background: red;
+   font-size: 10em;
+}
+
+/*.panel_single {
+   background: #777;
+   font-size: 4em;
+
+   &:hide {
+      display: none;
+   }
+
+   &:hover,normal {
+      display: block;
+   }
+}*/
+
+.hidelinks {
+   display: none;
+}
+
+.showlinks {
+   display: block;
+}

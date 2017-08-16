@@ -3,7 +3,7 @@ import React from 'react';
 
 
 import '../css/style.scss';
-// Maybe scss allows for CommonJS names --> pass to Link
+// Must include .scss for it to be generated into min
 
 import PanelEntire from './Panels/PanelEntire.jsx';
 

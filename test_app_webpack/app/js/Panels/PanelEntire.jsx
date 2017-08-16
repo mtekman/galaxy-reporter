@@ -5,6 +5,8 @@ import React from 'react';
 import PanelSection from './PanelSection.jsx';
 import linkmap from '../static/link_map.json';
 
+import classnames from 'classnames';
+
 export default class PanelEntire extends React.Component {
 
    constructor(props){
@@ -30,18 +32,12 @@ export default class PanelEntire extends React.Component {
       </PanelSection>;
    }
 
-/*  render(){
-         return (
-            <div
-               className="panels_main" >
-               {this._generateSinglePanel("system")}
-            </div>
-         )
-      }*/
    render(){
+      let classes = classnames('panels_main');
+
       return (
          <div
-            className="panels_main" >
+            className={classes} >
             {this._generateAllPanels()}
          </div>
       )

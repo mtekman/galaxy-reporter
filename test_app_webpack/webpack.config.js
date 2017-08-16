@@ -51,12 +51,12 @@ module.exports = {
 
                     use: [{
                             loader: 'css-loader',
-                            query: {
+/*                            query: {
                                 modules: true,
                                 sourceMap: true,
                                 importLoaders: 2,
                                 localIdentName: '[name]__[local]___[hash:base64:5]'
-                            }
+                            }*/
                         }, 'sass-loader'
                     ]
                 }),
