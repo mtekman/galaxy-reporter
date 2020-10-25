@@ -1,3 +1,9 @@
+### This repo has migrated to GitLab
+https://gitlab.com/mtekman/galaxy-reporter
+###### (The copy here is archived. Please see the above link for the latest developments)
+
+
+
 # Galaxy Reports App
 
 Uses ES6 -> Babel with React API
